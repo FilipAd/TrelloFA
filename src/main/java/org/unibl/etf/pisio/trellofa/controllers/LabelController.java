@@ -1,11 +1,13 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
+import org.unibl.etf.pisio.trellofa.models.Label;
 import org.unibl.etf.pisio.trellofa.models.entities.LabelEntity;
-import org.unibl.etf.pisio.trellofa.repositories.LabelEntityRepository;
+import org.unibl.etf.pisio.trellofa.services.LabelService;
 
 import java.util.List;
 
@@ -14,16 +16,22 @@ import java.util.List;
 
 public class LabelController
 {
-    private final LabelEntityRepository repository;
+    private final LabelService labelService;
 
-    public LabelController(LabelEntityRepository repository)
+    public LabelController(LabelService labelService)
     {
-        this.repository = repository;
+        this.labelService = labelService;
     }
+
     @GetMapping
-    List<LabelEntity> findAll()
+    List<Label> findAll()
     {
-        return repository.findAll();
+        return labelService.findAll();
+    }
+    @GetMapping("/{id}")
+    Label findById(@PathVariable Integer id) throws NotFoundException
+    {
+        return labelService.findById(id);
     }
 
 }

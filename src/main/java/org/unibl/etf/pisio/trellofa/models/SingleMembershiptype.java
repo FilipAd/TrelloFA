@@ -7,9 +7,7 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class SingleOrganization extends Organization
+public class SingleMembershiptype extends Membershiptype
 {
-    private List<Board> boards;
-    private List<Membership> memberships;
-
+    List<Membership> memberships;
 }

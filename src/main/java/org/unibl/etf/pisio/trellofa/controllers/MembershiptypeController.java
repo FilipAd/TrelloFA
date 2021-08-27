@@ -1,11 +1,13 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.unibl.etf.pisio.trellofa.models.entities.MembershiptypeEntity;
-import org.unibl.etf.pisio.trellofa.repositories.MembershiptypeEntityRepository;
+import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
+import org.unibl.etf.pisio.trellofa.models.Membershiptype;
+import org.unibl.etf.pisio.trellofa.models.SingleMembershiptype;
+import org.unibl.etf.pisio.trellofa.services.MembershiptypeService;
 
 import java.util.List;
 
@@ -13,16 +15,23 @@ import java.util.List;
 @RequestMapping("/membershiptypes")
 public class MembershiptypeController
 {
-    private final MembershiptypeEntityRepository repository;
+    private final MembershiptypeService service;
 
-    public MembershiptypeController(MembershiptypeEntityRepository repository)
+    public MembershiptypeController(MembershiptypeService service)
     {
-        this.repository = repository;
+        this.service = service;
     }
+
 
     @GetMapping
-    List<MembershiptypeEntity> findAll()
+    List<Membershiptype> findAll()
     {
-        return repository.findAll();
+        return service.findAll();
     }
+    @GetMapping("/{id}")
+    SingleMembershiptype findById(@PathVariable Integer id) throws NotFoundException
+    {
+        return service.findById(id);
+    }
+
 }

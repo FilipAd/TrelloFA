@@ -10,4 +10,5 @@ import java.util.List;
 public class SingleBoard extends Board
 {
     private List<List> lists;
+    private List<BoardHasMembers> boardHasMembers;
 }

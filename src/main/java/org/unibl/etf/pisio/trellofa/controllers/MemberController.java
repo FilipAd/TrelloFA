@@ -1,11 +1,14 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
+import org.unibl.etf.pisio.trellofa.models.Member;
+import org.unibl.etf.pisio.trellofa.models.SingleMember;
 import org.unibl.etf.pisio.trellofa.models.entities.MemberEntity;
-import org.unibl.etf.pisio.trellofa.repositories.MemberEntityRepository;
+import org.unibl.etf.pisio.trellofa.services.MemberService;
 
 import java.util.List;
 
@@ -13,15 +16,21 @@ import java.util.List;
 @RequestMapping("/members")
 public class MemberController
 {
-    private final MemberEntityRepository repository;
+    private final MemberService memebeService;
 
-    public MemberController(MemberEntityRepository repository)
+    public MemberController(MemberService memebeService)
     {
-        this.repository = repository;
+        this.memebeService = memebeService;
     }
+
     @GetMapping
-    List<MemberEntity> findAll()
+    List<Member> findAll()
     {
-        return repository.findAll();
+        return memebeService.findAll();
+    }
+    @GetMapping("/{id}")
+    SingleMember findById(@PathVariable Integer id) throws NotFoundException
+    {
+        return memebeService.findById(id);
     }
 }

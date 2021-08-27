@@ -1,11 +1,13 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.unibl.etf.pisio.trellofa.models.entities.CardEntity;
-import org.unibl.etf.pisio.trellofa.repositories.CardEntityRepository;
+import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
+import org.unibl.etf.pisio.trellofa.models.Card;
+import org.unibl.etf.pisio.trellofa.models.SingleCard;
+import org.unibl.etf.pisio.trellofa.services.CardService;
 
 import java.util.List;
 
@@ -13,15 +15,23 @@ import java.util.List;
 @RequestMapping("/cards")
 public class CardController
 {
-    private final CardEntityRepository repository;
+private final CardService cardService;
 
-    public CardController(CardEntityRepository repository)
+    public CardController(CardService cardService)
     {
-        this.repository = repository;
+        this.cardService = cardService;
     }
+
+
     @GetMapping
-    List<CardEntity> findAll()
+    List<Card> findAll()
     {
-        return repository.findAll();
+        return cardService.findAll();
     }
+    @GetMapping("/{id}")
+    SingleCard findById(@PathVariable Integer id) throws NotFoundException
+    {
+        return cardService.findById(id);
+    }
+
 }
