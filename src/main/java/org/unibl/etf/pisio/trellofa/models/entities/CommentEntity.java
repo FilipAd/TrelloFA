@@ -11,6 +11,7 @@ import java.util.Objects;
 @Table(name = "comment")
 public class CommentEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic

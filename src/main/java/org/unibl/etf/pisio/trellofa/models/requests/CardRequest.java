@@ -1,18 +1,12 @@
-package org.unibl.etf.pisio.trellofa.models;
+package org.unibl.etf.pisio.trellofa.models.requests;
 
 import lombok.Data;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.sql.Date;
 
 @Data
-public class Card
+public class CardRequest
 {
-
-    private Integer id;
-
     private String name;
 
     private String description;

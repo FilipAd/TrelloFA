@@ -11,6 +11,7 @@ import java.util.Objects;
 @Table(name = "attachment")
 public class AttachmentEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic

@@ -12,6 +12,7 @@ import java.util.Objects;
 @Table(name = "membershiptype")
 public class MembershiptypeEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic

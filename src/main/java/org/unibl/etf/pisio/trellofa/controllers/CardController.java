@@ -1,12 +1,11 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Card;
 import org.unibl.etf.pisio.trellofa.models.SingleCard;
+import org.unibl.etf.pisio.trellofa.models.requests.CardRequest;
 import org.unibl.etf.pisio.trellofa.services.CardService;
 
 import java.util.List;
@@ -32,6 +31,22 @@ private final CardService cardService;
     SingleCard findById(@PathVariable Integer id) throws NotFoundException
     {
         return cardService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        cardService.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Card insert(@RequestBody CardRequest cardRequest)throws NotFoundException
+    {
+        return cardService.insert(cardRequest);
+    }
+    @PutMapping("/{id}")
+    public Card update(@PathVariable Integer id,@RequestBody CardRequest cardRequest)throws NotFoundException
+    {
+        return cardService.update(id,cardRequest);
     }
 
 }

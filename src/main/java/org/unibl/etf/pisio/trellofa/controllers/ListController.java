@@ -1,12 +1,11 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.SingleList;
 import org.unibl.etf.pisio.trellofa.models.entities.ListEntity;
+import org.unibl.etf.pisio.trellofa.models.requests.ListRequest;
 import org.unibl.etf.pisio.trellofa.services.ListService;
 
 import java.util.List;
@@ -32,6 +31,22 @@ public class ListController
     SingleList findById(@PathVariable Integer id) throws NotFoundException
     {
         return service.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        service.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public org.unibl.etf.pisio.trellofa.models.List insert(@RequestBody ListRequest listRequest)throws NotFoundException
+    {
+        return service.insert(listRequest);
+    }
+    @PutMapping("/{id}")
+    public org.unibl.etf.pisio.trellofa.models.List insert(@PathVariable Integer id,@RequestBody ListRequest listRequest)throws NotFoundException
+    {
+        return service.update(id,listRequest);
     }
 
 }

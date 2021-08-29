@@ -1,14 +1,13 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Board;
 import org.unibl.etf.pisio.trellofa.models.SingleBoard;
 import org.unibl.etf.pisio.trellofa.models.entities.BoardEntity;
+import org.unibl.etf.pisio.trellofa.models.requests.BoardRequest;
 import org.unibl.etf.pisio.trellofa.services.BoardService;
 
 import java.util.List;
@@ -34,6 +33,22 @@ public class BoardController
     SingleBoard findById(@PathVariable Integer id) throws NotFoundException
     {
           return boardService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        boardService.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Board insert(@RequestBody BoardRequest boardRequest) throws NotFoundException
+    {
+        return boardService.insert(boardRequest);
+    }
+    @PutMapping("/{id}")
+    public Board update(@PathVariable Integer id,@RequestBody BoardRequest boardRequest) throws NotFoundException
+    {
+        return boardService.update(id,boardRequest);
     }
 
 

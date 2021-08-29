@@ -10,6 +10,7 @@ import java.util.Objects;
 @Table(name = "board_has_members")
 public class BoardHasMembersEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic

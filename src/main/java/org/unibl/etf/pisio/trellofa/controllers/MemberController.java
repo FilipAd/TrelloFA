@@ -1,13 +1,12 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Member;
 import org.unibl.etf.pisio.trellofa.models.SingleMember;
 import org.unibl.etf.pisio.trellofa.models.entities.MemberEntity;
+import org.unibl.etf.pisio.trellofa.models.requests.MemberRequest;
 import org.unibl.etf.pisio.trellofa.services.MemberService;
 
 import java.util.List;
@@ -32,5 +31,22 @@ public class MemberController
     SingleMember findById(@PathVariable Integer id) throws NotFoundException
     {
         return memebeService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        memebeService.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Member insert(@RequestBody MemberRequest memberRequest) throws NotFoundException
+    {
+        return memebeService.insert(memberRequest);
+    }
+
+    @PutMapping("/{id}")
+    public Member update(@PathVariable Integer id,@RequestBody MemberRequest memberRequest) throws NotFoundException
+    {
+        return memebeService.update(id,memberRequest);
     }
 }

@@ -1,12 +1,11 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Attachment;
 import org.unibl.etf.pisio.trellofa.models.entities.AttachmentEntity;
+import org.unibl.etf.pisio.trellofa.models.requests.AttachmentRequest;
 import org.unibl.etf.pisio.trellofa.services.AttachmentService;
 
 import java.nio.file.NotDirectoryException;
@@ -34,6 +33,23 @@ public class AttachmentController
     Attachment findById(@PathVariable Integer id) throws NotFoundException
     {
         return attachmentService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        attachmentService.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Attachment insert(@RequestBody AttachmentRequest attachmentRequest)throws NotFoundException
+    {
+        return attachmentService.insert(attachmentRequest);
+    }
+
+    @PutMapping("/{id}")
+    public Attachment update(@PathVariable Integer id,@RequestBody AttachmentRequest attachmentRequest)throws NotFoundException
+    {
+        return attachmentService.update(id,attachmentRequest);
     }
 
 

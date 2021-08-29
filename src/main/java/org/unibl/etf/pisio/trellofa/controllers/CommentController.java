@@ -1,12 +1,11 @@
 package org.unibl.etf.pisio.trellofa.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Comment;
 import org.unibl.etf.pisio.trellofa.models.entities.CommentEntity;
+import org.unibl.etf.pisio.trellofa.models.requests.CommentRequest;
 import org.unibl.etf.pisio.trellofa.services.CommentService;
 
 import java.util.List;
@@ -31,5 +30,21 @@ public class CommentController
     Comment findById(@PathVariable Integer id) throws NotFoundException
     {
         return commentService.findById(id);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id)
+    {
+        commentService.delete(id);
+    }
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    Comment insert(@RequestBody CommentRequest commentRequest)throws NotFoundException
+    {
+        return commentService.insert(commentRequest);
+    }
+    @PutMapping("/{id}")
+    Comment update(@PathVariable Integer id,@RequestBody CommentRequest commentRequest)throws NotFoundException
+    {
+        return commentService.update(id,commentRequest);
     }
 }

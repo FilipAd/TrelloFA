@@ -13,14 +13,15 @@ import java.util.Objects;
 @Table(name = "board")
 public class BoardEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic
     @Column(name = "name", nullable = true, length = 255)
     private String name;
     @Basic
-    @Column(name = "desc", nullable = true, length = -1)
-    private String desc;
+    @Column(name = "description", nullable = true, length = -1)
+    private String description;
     @Basic
     @Column(name = "closed", nullable = true)
     private Byte closed;
