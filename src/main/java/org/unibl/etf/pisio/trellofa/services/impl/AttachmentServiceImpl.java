@@ -45,6 +45,12 @@ public class AttachmentServiceImpl implements AttachmentService
     }
 
     @Override
+    public List<Attachment> getAllAttachmentsByMemberId(Integer id)
+    {
+        return repository.findAllByMember_Id(id).stream().map(e->attachmentMapper.map(e,Attachment.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id)
     {
         repository.deleteById(id);

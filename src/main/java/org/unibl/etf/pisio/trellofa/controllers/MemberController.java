@@ -3,11 +3,9 @@ package org.unibl.etf.pisio.trellofa.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
-import org.unibl.etf.pisio.trellofa.models.Member;
-import org.unibl.etf.pisio.trellofa.models.SingleMember;
-import org.unibl.etf.pisio.trellofa.models.entities.MemberEntity;
+import org.unibl.etf.pisio.trellofa.models.*;
 import org.unibl.etf.pisio.trellofa.models.requests.MemberRequest;
-import org.unibl.etf.pisio.trellofa.services.MemberService;
+import org.unibl.etf.pisio.trellofa.services.*;
 
 import java.util.List;
 
@@ -15,38 +13,66 @@ import java.util.List;
 @RequestMapping("/members")
 public class MemberController
 {
-    private final MemberService memebeService;
+    private final MemberService memeberService;
+    private final MembershipService membershipService;
+    private final AttachmentService attachmentService;
+    private final CommentService commentService;
+    private final BoardHasMembersService boardHasMembersService;
 
-    public MemberController(MemberService memebeService)
+    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService)
     {
-        this.memebeService = memebeService;
+        this.memeberService = memebeService;
+        this.membershipService = membershipService;
+        this.attachmentService = attachmentService;
+        this.commentService = commentService;
+        this.boardHasMembersService = boardHasMembersService;
     }
 
     @GetMapping
     List<Member> findAll()
     {
-        return memebeService.findAll();
+        return memeberService.findAll();
     }
+
     @GetMapping("/{id}")
     SingleMember findById(@PathVariable Integer id) throws NotFoundException
     {
-        return memebeService.findById(id);
+        return memeberService.findById(id);
+    }
+    @GetMapping("/{id}/memberships")
+    public List<Membership> findAllMembershipsByMemberId(@PathVariable Integer id)
+    {
+        return membershipService.getAllMembershipsByMemberId(id);
+    }
+    @GetMapping("/{id}/attachments")
+    public List<Attachment> findAllAttachmentsByMemberId(@PathVariable Integer id)
+    {
+        return attachmentService.getAllAttachmentsByMemberId(id);
+    }
+    @GetMapping("/{id}/comments")
+    public List<Comment> findAllCommentsByMemberId(@PathVariable Integer id)
+    {
+        return commentService.getAllCommentsByMemberId(id);
+    }
+    @GetMapping(("/{id}/boardhasmembers"))
+    public List<BoardHasMembers> findAllBoardHasMembersByMemberId(@PathVariable Integer id)
+    {
+        return boardHasMembersService.findAllBoardHasMembersByMemberId(id);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)
     {
-        memebeService.delete(id);
+        memeberService.delete(id);
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Member insert(@RequestBody MemberRequest memberRequest) throws NotFoundException
     {
-        return memebeService.insert(memberRequest);
+        return memeberService.insert(memberRequest);
     }
-
     @PutMapping("/{id}")
     public Member update(@PathVariable Integer id,@RequestBody MemberRequest memberRequest) throws NotFoundException
     {
-        return memebeService.update(id,memberRequest);
+        return memeberService.update(id,memberRequest);
     }
 }

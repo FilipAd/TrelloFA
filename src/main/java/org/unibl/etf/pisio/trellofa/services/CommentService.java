@@ -13,4 +13,6 @@ public interface CommentService
     void delete(Integer id);
     Comment insert(CommentRequest commentRequest)throws NotFoundException;
     Comment update(Integer id,CommentRequest commentRequest) throws NotFoundException;
+    List<Comment> getAllCommentsByMemberId(Integer id);
+    List<Comment> getAllCommentsByCardId(Integer id);
 }

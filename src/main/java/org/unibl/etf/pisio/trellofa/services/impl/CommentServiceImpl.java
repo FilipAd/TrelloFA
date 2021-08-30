@@ -66,4 +66,16 @@ public class CommentServiceImpl implements CommentService
         entityManager.refresh(commentEntity);
         return findById(commentEntity.getId());
     }
+
+    @Override
+    public List<Comment> getAllCommentsByMemberId(Integer id)
+    {
+        return repository.getAllByMember_Id(id).stream().map(e->mapper.map(e,Comment.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Comment> getAllCommentsByCardId(Integer id)
+    {
+        return repository.getAllByCard_Id(id).stream().map(e->mapper.map(e,Comment.class)).collect(Collectors.toList());
+    }
 }

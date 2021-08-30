@@ -46,6 +46,12 @@ public class ListServiceImpl implements ListService
     }
 
     @Override
+    public java.util.List<List> getAllListsByBoardId(Integer id)
+    {
+        return repository.findAllByBoard_Id(id).stream().map(e->mapper.map(e,List.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id)
     {
      repository.deleteById(id);

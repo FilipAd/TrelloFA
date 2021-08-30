@@ -3,9 +3,10 @@ package org.unibl.etf.pisio.trellofa.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
+import org.unibl.etf.pisio.trellofa.models.Card;
 import org.unibl.etf.pisio.trellofa.models.SingleList;
-import org.unibl.etf.pisio.trellofa.models.entities.ListEntity;
 import org.unibl.etf.pisio.trellofa.models.requests.ListRequest;
+import org.unibl.etf.pisio.trellofa.services.CardService;
 import org.unibl.etf.pisio.trellofa.services.ListService;
 
 import java.util.List;
@@ -15,10 +16,11 @@ import java.util.List;
 public class ListController
 {
     private final ListService service;
-
-    public ListController(ListService service)
+    private final CardService cardService;
+    public ListController(ListService service, CardService cardService)
     {
         this.service = service;
+        this.cardService = cardService;
     }
 
 
@@ -26,6 +28,11 @@ public class ListController
     List<org.unibl.etf.pisio.trellofa.models.List> findAll()
     {
         return service.findAll();
+    }
+    @GetMapping("/{id}/cards")
+    public List<Card> findAllCardsByListId(@PathVariable Integer id)
+    {
+       return cardService.getAllCardsByListId(id);
     }
     @GetMapping("/{id}")
     SingleList findById(@PathVariable Integer id) throws NotFoundException

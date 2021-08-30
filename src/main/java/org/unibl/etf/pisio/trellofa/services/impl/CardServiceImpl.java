@@ -42,6 +42,12 @@ public class CardServiceImpl implements CardService
     }
 
     @Override
+    public List<Card> getAllCardsByListId(Integer id)
+    {
+        return repository.getAllByList_Id(id).stream().map(e->mapper.map(e,Card.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public SingleCard findById(Integer id) throws NotFoundException {
         return mapper.map(repository.findById(id).orElseThrow(NotFoundException::new),SingleCard.class);
     }

@@ -9,6 +9,6 @@ import java.util.List;
 @Data
 public class SingleBoard extends Board
 {
-    private List<List> lists;
+    private List<org.unibl.etf.pisio.trellofa.models.List> lists;
     private List<BoardHasMembers> boardHasMembers;
 }

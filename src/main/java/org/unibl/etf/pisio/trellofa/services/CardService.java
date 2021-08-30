@@ -10,6 +10,7 @@ import java.util.List;
 public interface CardService
 {
     List<Card> findAll();
+    List<Card> getAllCardsByListId(Integer id);
     SingleCard findById(Integer id) throws NotFoundException;
     void delete(Integer id);
     Card insert(CardRequest cardRequest)throws NotFoundException;

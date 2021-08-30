@@ -37,6 +37,18 @@ public class BoardHasMembersServiceImpl implements BoardHasMembersService
     }
 
     @Override
+    public List<BoardHasMembers> findAllBoardHasMembersByMemberId(Integer id)
+    {
+        return repository.getAllByMember_Id(id).stream().map(e->mapper.map(e,BoardHasMembers.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<BoardHasMembers> findAllBoardHasMembersByBoardId(Integer id)
+    {
+        return repository.getAllByBoard_Id(id).stream().map(e->mapper.map(e,BoardHasMembers.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public BoardHasMembers findById(Integer id) throws NotFoundException
     {
         return mapper.map(repository.findById(id).orElseThrow(NotFoundException::new),BoardHasMembers.class);

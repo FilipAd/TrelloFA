@@ -8,5 +8,6 @@ import java.util.List;
 public interface MembershipEntityRepository extends JpaRepository<MembershipEntity,Integer>
 {
     List<MembershipEntity>getAllByOrganization_Id(Integer id);
-
+    List<MembershipEntity>getAllByMembershiptype_Id(Integer id);
+    List<MembershipEntity>getAllByMember_Id(Integer id);
 }

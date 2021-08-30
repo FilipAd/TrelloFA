@@ -50,6 +50,18 @@ public class MembershipServiceImpl implements MembershipService
     }
 
     @Override
+    public List<Membership> getAllMembershipsByMembershiptypeId(Integer id)
+    {
+        return repository.getAllByMembershiptype_Id(id).stream().map(e->mapper.map(e,Membership.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Membership> getAllMembershipsByMemberId(Integer id)
+    {
+        return repository.getAllByMember_Id(id).stream().map(e->mapper.map(e,Membership.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id)
     {
         repository.deleteById(id);
