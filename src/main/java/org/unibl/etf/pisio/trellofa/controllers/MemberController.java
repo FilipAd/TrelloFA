@@ -18,14 +18,16 @@ public class MemberController
     private final AttachmentService attachmentService;
     private final CommentService commentService;
     private final BoardHasMembersService boardHasMembersService;
+    private final MembersOnCardsService membersOnCardsService;
 
-    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService)
+    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService, MembersOnCardsService membersOnCardsService)
     {
         this.memeberService = memebeService;
         this.membershipService = membershipService;
         this.attachmentService = attachmentService;
         this.commentService = commentService;
         this.boardHasMembersService = boardHasMembersService;
+        this.membersOnCardsService = membersOnCardsService;
     }
 
     @GetMapping
@@ -58,6 +60,11 @@ public class MemberController
     public List<BoardHasMembers> findAllBoardHasMembersByMemberId(@PathVariable Integer id)
     {
         return boardHasMembersService.findAllBoardHasMembersByMemberId(id);
+    }
+    @GetMapping("/{id}/membersoncards")
+    public List<MembersOnCards> findAllMembersOnCardsByMemberId(@PathVariable Integer id)
+    {
+        return membersOnCardsService.getAllMembersOnCardsByMemberId(id);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)

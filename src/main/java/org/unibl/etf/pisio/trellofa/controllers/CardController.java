@@ -4,14 +4,12 @@ package org.unibl.etf.pisio.trellofa.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
-import org.unibl.etf.pisio.trellofa.models.Card;
-import org.unibl.etf.pisio.trellofa.models.Comment;
-import org.unibl.etf.pisio.trellofa.models.Label;
-import org.unibl.etf.pisio.trellofa.models.SingleCard;
+import org.unibl.etf.pisio.trellofa.models.*;
 import org.unibl.etf.pisio.trellofa.models.requests.CardRequest;
 import org.unibl.etf.pisio.trellofa.services.CardService;
 import org.unibl.etf.pisio.trellofa.services.CommentService;
 import org.unibl.etf.pisio.trellofa.services.LabelService;
+import org.unibl.etf.pisio.trellofa.services.MembersOnCardsService;
 
 import java.util.List;
 
@@ -22,12 +20,14 @@ public class CardController
 private final CardService cardService;
 private final CommentService commentService;
 private final LabelService labelService;
+private final MembersOnCardsService membersOnCardsService;
 
-    public CardController(CardService cardService, CommentService commentService, LabelService labelService)
+    public CardController(CardService cardService, CommentService commentService, LabelService labelService, MembersOnCardsService membersOnCardsService)
     {
         this.cardService = cardService;
         this.commentService = commentService;
         this.labelService = labelService;
+        this.membersOnCardsService = membersOnCardsService;
     }
 
 
@@ -51,6 +51,11 @@ private final LabelService labelService;
     public List<Label> findAllLabelsByCardId(@PathVariable Integer id)
     {
         return labelService.getAllLabelsByCardId(id);
+    }
+    @GetMapping("/{id}/membersoncards")
+    public List<MembersOnCards> findAllMembersOnCardsByCardId(@PathVariable Integer id)
+    {
+        return membersOnCardsService.getAllMembersOnCardsByCardId(id);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)
