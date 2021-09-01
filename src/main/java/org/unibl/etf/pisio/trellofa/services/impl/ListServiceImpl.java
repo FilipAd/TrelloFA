@@ -52,7 +52,7 @@ public class ListServiceImpl implements ListService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
      repository.deleteById(id);
     }

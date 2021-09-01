@@ -44,7 +44,7 @@ public class MemberServiceImpl implements MemberService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
     }

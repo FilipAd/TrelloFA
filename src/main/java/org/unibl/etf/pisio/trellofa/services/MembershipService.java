@@ -15,7 +15,7 @@ public interface MembershipService
     List<Membership> getAllMembershipsByOrganizationId(Integer id);
     List<Membership> getAllMembershipsByMembershiptypeId(Integer id);
     List<Membership> getAllMembershipsByMemberId(Integer id);
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     Membership insert(MembershipRequest membershipRequest) throws NotFoundException;
     Membership update(Integer id,MembershipRequest membershipRequest) throws NotFoundException;
 

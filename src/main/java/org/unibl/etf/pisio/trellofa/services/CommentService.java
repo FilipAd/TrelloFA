@@ -10,7 +10,7 @@ public interface CommentService
 {
     List<Comment> findAll();
     Comment findById(Integer id) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     Comment insert(CommentRequest commentRequest)throws NotFoundException;
     Comment update(Integer id,CommentRequest commentRequest) throws NotFoundException;
     List<Comment> getAllCommentsByMemberId(Integer id);

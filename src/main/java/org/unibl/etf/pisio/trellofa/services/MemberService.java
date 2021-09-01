@@ -12,7 +12,7 @@ public interface MemberService
 {
     List<Member>findAll();
     SingleMember findById(Integer id) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     Member insert(MemberRequest memberRequest) throws NotFoundException;
     Member update(Integer id,MemberRequest memberRequest) throws NotFoundException;
 }

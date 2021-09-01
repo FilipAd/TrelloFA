@@ -49,7 +49,7 @@ public class BoardServiceImpl implements BoardService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
     }

@@ -53,7 +53,7 @@ public class CardServiceImpl implements CardService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
     }

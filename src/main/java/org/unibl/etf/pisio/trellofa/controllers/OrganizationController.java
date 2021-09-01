@@ -51,7 +51,7 @@ public class OrganizationController
         return membershipService.getAllMembershipsByOrganizationId(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         organizationService.delete(id);
     }

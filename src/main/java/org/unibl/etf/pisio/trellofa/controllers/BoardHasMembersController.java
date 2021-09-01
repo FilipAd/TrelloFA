@@ -32,7 +32,7 @@ public class BoardHasMembersController
         return  service.findById(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         service.delete(id);
     }

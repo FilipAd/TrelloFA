@@ -14,7 +14,7 @@ public interface BoardHasMembersService
     List<BoardHasMembers> findAllBoardHasMembersByMemberId(Integer id);
     List<BoardHasMembers> findAllBoardHasMembersByBoardId(Integer id);
     BoardHasMembers findById(Integer id) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     BoardHasMembers insert(BoardHasMembersRequest boardHasMembersRequest)throws NotFoundException;
     BoardHasMembers update(Integer id,BoardHasMembersRequest boardHasMembersRequest)throws NotFoundException;
 }

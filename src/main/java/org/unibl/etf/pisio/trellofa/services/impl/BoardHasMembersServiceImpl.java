@@ -55,7 +55,7 @@ public class BoardHasMembersServiceImpl implements BoardHasMembersService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
     }

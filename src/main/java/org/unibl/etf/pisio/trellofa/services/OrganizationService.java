@@ -13,7 +13,7 @@ public interface OrganizationService
     SingleOrganization findById(Integer id) throws NotFoundException;
     Organization insert(OrganizationRequest organizationRequest) throws NotFoundException;
     Organization update(Integer id,OrganizationRequest organizationRequest) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
 
 
 

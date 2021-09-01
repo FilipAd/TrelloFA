@@ -24,4 +24,6 @@ public class MemberRequest
     private Byte confirmed;
 
     private String email;
+
+    private String password_hash;
 }

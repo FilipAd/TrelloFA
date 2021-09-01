@@ -11,7 +11,7 @@ public interface MembershiptypeService
 {
     List<Membershiptype> findAll();
     SingleMembershiptype findById (Integer id) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     Membershiptype insert(MembershiptypeRequest membershiptypeRequest) throws NotFoundException;
     Membershiptype update(Integer id,MembershiptypeRequest membershiptypeRequest) throws NotFoundException;
 }

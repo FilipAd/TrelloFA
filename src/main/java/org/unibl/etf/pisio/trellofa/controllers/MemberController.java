@@ -67,7 +67,7 @@ public class MemberController
         return membersOnCardsService.getAllMembersOnCardsByMemberId(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         memeberService.delete(id);
     }

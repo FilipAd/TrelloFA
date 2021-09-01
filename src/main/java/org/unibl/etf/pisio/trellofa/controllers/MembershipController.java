@@ -34,7 +34,7 @@ public class MembershipController
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         membershipService.delete(id);
     }

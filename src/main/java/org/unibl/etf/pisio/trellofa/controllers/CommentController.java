@@ -32,7 +32,7 @@ public class CommentController
         return commentService.findById(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         commentService.delete(id);
     }

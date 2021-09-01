@@ -14,7 +14,7 @@ List<MembersOnCards> findAll();
 List<MembersOnCards> getAllMembersOnCardsByMemberId(Integer id);
 List<MembersOnCards> getAllMembersOnCardsByCardId(Integer id);
 MembersOnCards findById(Integer id) throws NotFoundException;
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     MembersOnCards insert(MembersOnCardsRequest membersOnCardsRequest) throws NotFoundException;
     MembersOnCards update(Integer id,MembersOnCardsRequest membersOnCardsRequest) throws NotFoundException;
 }

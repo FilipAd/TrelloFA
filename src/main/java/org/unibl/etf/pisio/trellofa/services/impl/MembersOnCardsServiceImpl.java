@@ -56,7 +56,7 @@ public class MembersOnCardsServiceImpl implements MembersOnCardsService
     }
 
     @Override
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
     }

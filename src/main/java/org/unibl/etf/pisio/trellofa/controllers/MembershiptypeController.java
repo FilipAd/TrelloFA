@@ -42,7 +42,7 @@ public class MembershiptypeController
         return membershipService.getAllMembershipsByMembershiptypeId(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         service.delete(id);
     }

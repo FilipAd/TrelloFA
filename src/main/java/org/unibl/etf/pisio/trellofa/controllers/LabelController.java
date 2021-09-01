@@ -33,7 +33,7 @@ public class LabelController
         return labelService.findById(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(Integer id)
+    public void delete(Integer id)throws NotFoundException
     {
         labelService.delete(id);
     }

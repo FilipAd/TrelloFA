@@ -11,7 +11,7 @@ public interface LabelService {
 
     Label findById(Integer id) throws NotFoundException;
 
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
 
     Label insert(LabelRequest labelRequest) throws NotFoundException;
 

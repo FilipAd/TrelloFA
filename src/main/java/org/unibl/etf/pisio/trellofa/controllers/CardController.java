@@ -58,7 +58,7 @@ private final MembersOnCardsService membersOnCardsService;
         return membersOnCardsService.getAllMembersOnCardsByCardId(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         cardService.delete(id);
     }

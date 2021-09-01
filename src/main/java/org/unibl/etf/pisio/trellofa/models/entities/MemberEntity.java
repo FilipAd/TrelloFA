@@ -45,6 +45,9 @@ public class MemberEntity {
     @Basic
     @Column(name = "email", nullable = true, length = 255)
     private String email;
+    @Basic
+    @Column(name = "password_hash", nullable = true, length = 64)
+    private String password_hash;
     @OneToMany(mappedBy = "member")
     @JsonIgnore
     private List<AttachmentEntity> attachments;

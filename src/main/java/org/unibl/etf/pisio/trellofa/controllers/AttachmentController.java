@@ -35,7 +35,7 @@ public class AttachmentController
         return attachmentService.findById(id);
     }
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id)
+    public void delete(@PathVariable Integer id)throws NotFoundException
     {
         attachmentService.delete(id);
     }

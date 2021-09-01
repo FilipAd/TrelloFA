@@ -14,7 +14,7 @@ public interface AttachmentService
     List<Attachment> findAll();
     Attachment findById(Integer id) throws NotFoundException;
     List<Attachment> getAllAttachmentsByMemberId(Integer id);
-    void delete(Integer id);
+    void delete(Integer id) throws NotFoundException;
     Attachment insert(AttachmentRequest attachmentRequest)throws NotFoundException;
     Attachment update(Integer id,AttachmentRequest attachmentRequest)throws NotFoundException;
 }
