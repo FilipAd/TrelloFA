@@ -1,6 +1,8 @@
 package org.unibl.etf.pisio.trellofa.models;
 
 import lombok.Data;
+import org.unibl.etf.pisio.trellofa.models.enums.Role;
+import org.unibl.etf.pisio.trellofa.models.enums.Status;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -11,9 +13,9 @@ public class Member
 {
     private Integer id;
 
-    private String userName;
+    private String username;
 
-    private String fullName;
+    private String fullname;
 
     private String avatarSource;
 
@@ -23,7 +25,9 @@ public class Member
 
     private String memberType;
 
-    private String status;
+    private Status status;
+
+    private Role role;
 
     private String url;
 
@@ -31,5 +35,5 @@ public class Member
 
     private String email;
 
-    private String password_hash;
+    private String password;
 }

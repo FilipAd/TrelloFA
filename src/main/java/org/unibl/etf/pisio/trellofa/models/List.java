@@ -22,4 +22,6 @@ private Integer id;
 
     private Integer idBoard;
 
+    private java.util.List<Card> cards;
+
 }

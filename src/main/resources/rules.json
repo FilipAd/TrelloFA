@@ -1,0 +1,30 @@
+{
+  "rules": [
+    {
+      "methods": ["GET"],
+      "pattern": "/organizations",
+      "roles": ["ADMIN","USER"]
+    },
+    {
+      "methods": ["GET"],
+      "pattern": "/boards",
+      "roles": [
+        "ADMIN","USER"
+      ]
+    },
+    {
+      "methods": [],
+      "pattern": "/organizations/**",
+      "roles": [
+        "ADMIN"
+      ]
+    },
+    {
+      "methods": [],
+      "pattern": "/boards/**",
+      "roles": [
+        "USER","ADMIN"
+      ]
+    }
+  ]
+}

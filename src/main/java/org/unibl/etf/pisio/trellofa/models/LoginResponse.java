@@ -1,12 +1,15 @@
-package org.unibl.etf.pisio.trellofa.models.requests;
+package org.unibl.etf.pisio.trellofa.models;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.unibl.etf.pisio.trellofa.models.enums.Role;
 import org.unibl.etf.pisio.trellofa.models.enums.Status;
 
 @Data
-public class MemberRequest
+public class LoginResponse
 {
+    private Integer id;
+
     private String username;
 
     private String fullname;
@@ -30,4 +33,6 @@ public class MemberRequest
     private String email;
 
     private String password;
+
+    private String token;
 }

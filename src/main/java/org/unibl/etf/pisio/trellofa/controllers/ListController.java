@@ -6,6 +6,7 @@ import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Card;
 import org.unibl.etf.pisio.trellofa.models.SingleList;
 import org.unibl.etf.pisio.trellofa.models.requests.ListRequest;
+import org.unibl.etf.pisio.trellofa.repositories.ListEntityRepository;
 import org.unibl.etf.pisio.trellofa.services.CardService;
 import org.unibl.etf.pisio.trellofa.services.ListService;
 
@@ -17,10 +18,12 @@ public class ListController
 {
     private final ListService service;
     private final CardService cardService;
-    public ListController(ListService service, CardService cardService)
+    private final ListEntityRepository listEntityRepository;
+    public ListController(ListService service, CardService cardService, ListEntityRepository listEntityRepository)
     {
         this.service = service;
         this.cardService = cardService;
+        this.listEntityRepository = listEntityRepository;
     }
 
 

@@ -2,10 +2,11 @@ package org.unibl.etf.pisio.trellofa.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.unibl.etf.pisio.trellofa.models.enums.Role;
+import org.unibl.etf.pisio.trellofa.models.enums.Status;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Data
 @Entity
@@ -16,11 +17,11 @@ public class MemberEntity {
     @Column(name = "id", nullable = false)
     private Integer id;
     @Basic
-    @Column(name = "user_name", nullable = true, length = 255)
-    private String userName;
+    @Column(name = "username", nullable = true, length = 255)
+    private String username;
     @Basic
-    @Column(name = "full_name", nullable = true, length = 255)
-    private String fullName;
+    @Column(name = "fullname", nullable = true, length = 255)
+    private String fullname;
     @Basic
     @Column(name = "avatar_source", nullable = true, length = 255)
     private String avatarSource;
@@ -34,9 +35,6 @@ public class MemberEntity {
     @Column(name = "member_type", nullable = true, length = 255)
     private String memberType;
     @Basic
-    @Column(name = "status", nullable = true, length = 255)
-    private String status;
-    @Basic
     @Column(name = "url", nullable = true, length = 255)
     private String url;
     @Basic
@@ -46,8 +44,14 @@ public class MemberEntity {
     @Column(name = "email", nullable = true, length = 255)
     private String email;
     @Basic
-    @Column(name = "password_hash", nullable = true, length = 64)
-    private String password_hash;
+    @Column(name = "password", nullable = true, length = 255)
+    private String password;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="role",nullable = false)
+    private Role role;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name= "status",nullable = false)
+    private Status status;
     @OneToMany(mappedBy = "member")
     @JsonIgnore
     private List<AttachmentEntity> attachments;
