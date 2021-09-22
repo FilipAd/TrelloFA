@@ -32,4 +32,6 @@ public class CardRequest
     private Byte subscribed;
 
     private Integer idList;
+
+    private Integer dndIndex;
 }

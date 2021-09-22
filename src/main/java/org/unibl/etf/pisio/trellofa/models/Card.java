@@ -37,5 +37,7 @@ public class Card
 
     private Byte subscribed;
 
+    private Integer dndIndex;
+
     private Integer idList;
 }

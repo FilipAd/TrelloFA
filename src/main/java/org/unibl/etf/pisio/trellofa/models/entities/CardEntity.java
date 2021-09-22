@@ -52,6 +52,9 @@ public class CardEntity {
     @Column(name = "subscribed", nullable = true)
     private Byte subscribed;
     @Basic
+    @Column(name = "dnd_index", nullable = true)
+    private Integer dndIndex;
+    @Basic
     @Column(name = "id_list", nullable = false,insertable = false,updatable = false)
     private Integer idList;
     @ManyToOne(fetch = FetchType.LAZY)

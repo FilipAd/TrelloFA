@@ -2,26 +2,26 @@
   "rules": [
     {
       "methods": ["GET"],
-      "pattern": "/organizations",
-      "roles": ["ADMIN","USER"]
+      "pattern": "/o",
+      "roles": []
     },
     {
       "methods": ["GET"],
-      "pattern": "/boards",
+      "pattern": "/alo",
       "roles": [
         "ADMIN","USER"
       ]
     },
     {
       "methods": [],
-      "pattern": "/organizations/**",
+      "pattern": "/org/**",
       "roles": [
         "ADMIN"
       ]
     },
     {
       "methods": [],
-      "pattern": "/boards/**",
+      "pattern": "/alo/**",
       "roles": [
         "USER","ADMIN"
       ]
