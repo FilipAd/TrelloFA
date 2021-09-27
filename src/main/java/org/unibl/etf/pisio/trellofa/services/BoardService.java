@@ -14,6 +14,7 @@ public interface BoardService
     List<Board> findAll();
     SingleBoard findById(Integer id) throws NotFoundException;
     List<Board> getAllBoardsByOrganizationId(Integer id);
+    List<Board> getBoardsByMemberId(Integer id);
     void delete(Integer id) throws NotFoundException;
     Board insert(BoardRequest boardRequest) throws NotFoundException;
     Board update(Integer id,BoardRequest boardRequest) throws NotFoundException;

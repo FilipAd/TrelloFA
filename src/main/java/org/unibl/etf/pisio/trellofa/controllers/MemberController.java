@@ -19,8 +19,9 @@ public class MemberController
     private final CommentService commentService;
     private final BoardHasMembersService boardHasMembersService;
     private final MembersOnCardsService membersOnCardsService;
+    private final BoardService boardService;
 
-    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService, MembersOnCardsService membersOnCardsService)
+    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService, MembersOnCardsService membersOnCardsService, BoardService boardService)
     {
         this.memeberService = memebeService;
         this.membershipService = membershipService;
@@ -28,6 +29,7 @@ public class MemberController
         this.commentService = commentService;
         this.boardHasMembersService = boardHasMembersService;
         this.membersOnCardsService = membersOnCardsService;
+        this.boardService = boardService;
     }
 
     @GetMapping
@@ -41,6 +43,13 @@ public class MemberController
     {
         return memeberService.findById(id);
     }
+
+    @GetMapping("/{id}/boardsbymember")
+    public List<Board> findBoardsByMemberId(@PathVariable Integer id)
+    {
+        return boardService.getBoardsByMemberId(id);
+    }
+
     @GetMapping("/{id}/memberships")
     public List<Membership> findAllMembershipsByMemberId(@PathVariable Integer id)
     {

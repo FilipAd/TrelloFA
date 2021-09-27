@@ -2,12 +2,12 @@
   "rules": [
     {
       "methods": ["GET"],
-      "pattern": "/o",
+      "pattern": "/bo",
       "roles": []
     },
     {
       "methods": ["GET"],
-      "pattern": "/alo",
+      "pattern": "/boa/**",
       "roles": [
         "ADMIN","USER"
       ]

@@ -51,6 +51,10 @@ public class BoardController
     {
         return boardHasMembersService.findAllBoardHasMembersByBoardId(id);
     }
+
+
+
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)throws NotFoundException
     {

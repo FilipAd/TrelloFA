@@ -49,6 +49,11 @@ public class BoardServiceImpl implements BoardService
     }
 
     @Override
+    public List<Board> getBoardsByMemberId(Integer id) {
+        return repository.getBoardsByMemberId(id).stream().map(e->mapper.map(e,Board.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id)throws NotFoundException
     {
         repository.deleteById(id);
