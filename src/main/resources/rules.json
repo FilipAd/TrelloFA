@@ -7,17 +7,17 @@
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/boards/**",
+      "pattern": "/boardsa/**",
       "roles": ["USER","ADMIN"]
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/lists/**",
+      "pattern": "/listsa/**",
       "roles": ["USER","ADMIN"]
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/cards/**",
+      "pattern": "/cardsa/**",
       "roles": ["USER","ADMIN"]
     }
   ]

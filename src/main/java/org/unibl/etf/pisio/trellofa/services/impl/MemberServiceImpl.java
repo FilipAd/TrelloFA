@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.unibl.etf.pisio.trellofa.exceptions.ConflictException;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Member;
+import org.unibl.etf.pisio.trellofa.models.MemberBasic;
 import org.unibl.etf.pisio.trellofa.models.SingleMember;
 import org.unibl.etf.pisio.trellofa.models.entities.MemberEntity;
 import org.unibl.etf.pisio.trellofa.models.enums.Role;
@@ -80,6 +81,11 @@ public class MemberServiceImpl implements MemberService
     @Override
     public Member findByIdMember(Integer id) throws NotFoundException {
         return mapper.map(repository.findById(id).orElseThrow(NotFoundException::new),Member.class);
+    }
+
+    @Override
+    public List<MemberBasic> findByMemberUsername(String un) throws NotFoundException {
+        return repository.getAllByUsernameContains(un).stream().map(e->mapper.map(e,MemberBasic.class)).collect(Collectors.toList());
     }
 
     @Override

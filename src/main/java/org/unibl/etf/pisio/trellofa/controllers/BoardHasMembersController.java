@@ -31,6 +31,13 @@ public class BoardHasMembersController
     {
         return  service.findById(id);
     }
+
+   @GetMapping("/{idMember}/{idBoard}")
+   List<BoardHasMembers> findByMemberAndBoard(@PathVariable Integer idMember,@PathVariable Integer idBoard) throws NotFoundException
+   {
+      return  service.findAllBoardHasMembersByBoardAndMember(idMember,idBoard);
+   }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)throws NotFoundException
     {

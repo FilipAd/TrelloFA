@@ -43,7 +43,10 @@ public class MemberController
     {
         return memeberService.findById(id);
     }
-
+    @GetMapping("/byusername/{un}")
+        List<MemberBasic> findAllByUsername(@PathVariable String un) throws NotFoundException {
+            return memeberService.findByMemberUsername(un);
+        }
     @GetMapping("/{id}/boardsbymember")
     public List<Board> findBoardsByMemberId(@PathVariable Integer id)
     {
@@ -75,6 +78,7 @@ public class MemberController
     {
         return membersOnCardsService.getAllMembersOnCardsByMemberId(id);
     }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)throws NotFoundException
     {
