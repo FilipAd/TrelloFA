@@ -63,8 +63,8 @@ public class CardEntity {
     @OneToMany(mappedBy = "card")
     @JsonIgnore
     private List<CommentEntity> comments;
-    @OneToMany(mappedBy = "card")
+ /*   @OneToMany(mappedBy = "card")
     @JsonIgnore
-    private List<LabelEntity> labels;
+    private List<LabelEntity> labels;*/
 
 }

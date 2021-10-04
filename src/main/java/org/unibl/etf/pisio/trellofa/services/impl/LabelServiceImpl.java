@@ -67,9 +67,9 @@ public class LabelServiceImpl implements LabelService
         return findById(labelEntity.getId());
     }
 
-    @Override
+  /*  @Override
     public List<Label> getAllLabelsByCardId(Integer id)
     {
         return repository.getAllByCard_Id(id).stream().map(e->mapper.map(e,Label.class)).collect(Collectors.toList());
-    }
+    }*/
 }

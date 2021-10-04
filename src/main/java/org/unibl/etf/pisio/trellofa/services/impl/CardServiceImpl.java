@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.unibl.etf.pisio.trellofa.exceptions.NotFoundException;
 import org.unibl.etf.pisio.trellofa.models.Card;
+import org.unibl.etf.pisio.trellofa.models.Label;
 import org.unibl.etf.pisio.trellofa.models.SingleCard;
 import org.unibl.etf.pisio.trellofa.models.entities.CardEntity;
 import org.unibl.etf.pisio.trellofa.models.requests.CardRequest;
@@ -45,6 +46,11 @@ public class CardServiceImpl implements CardService
     public List<Card> getAllCardsByListId(Integer id)
     {
         return repository.getAllByList_Id(id).stream().map(e->mapper.map(e,Card.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Label> getAllLabelsByCardId(Integer idCard) {
+        return repository.getAllLabelsByCardId(idCard).stream().map(e->mapper.map(e,Label.class)).collect(Collectors.toList());
     }
 
     @Override

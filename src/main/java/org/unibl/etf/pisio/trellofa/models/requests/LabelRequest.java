@@ -11,5 +11,4 @@ public class LabelRequest
 
     private String text;
 
-    private Integer idCard;
 }

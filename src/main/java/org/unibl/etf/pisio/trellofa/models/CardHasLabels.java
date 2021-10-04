@@ -7,15 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 @Data
-public class Label
+public class CardHasLabels
 {
-
     private Integer id;
 
-    private String color;
+    private Integer idCard;
 
-    private String name;
-
-    private String text;
-
+    private Integer idLabel;
 }

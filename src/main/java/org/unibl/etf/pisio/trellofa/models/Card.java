@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.util.List;
 
 @Data
 public class Card
@@ -40,4 +41,6 @@ public class Card
     private Integer dndIndex;
 
     private Integer idList;
+
+  //  private List<Label> labels;
 }

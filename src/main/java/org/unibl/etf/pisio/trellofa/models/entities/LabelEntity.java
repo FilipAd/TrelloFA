@@ -22,11 +22,5 @@ public class LabelEntity {
     @Basic
     @Column(name = "text", nullable = true, length = -1)
     private String text;
-    @Basic
-    @Column(name = "id_card", nullable = false,insertable = false,updatable = false)
-    private Integer idCard;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_card", referencedColumnName = "id", nullable = false)
-    private CardEntity card;
 
 }

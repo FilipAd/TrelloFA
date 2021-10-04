@@ -47,10 +47,10 @@ private final MembersOnCardsService membersOnCardsService;
     {
         return commentService.getAllCommentsByCardId(id);
     }
-    @GetMapping("/{id}/labels")
+   @GetMapping("/{id}/labels")
     public List<Label> findAllLabelsByCardId(@PathVariable Integer id)
     {
-        return labelService.getAllLabelsByCardId(id);
+        return cardService.getAllLabelsByCardId(id);
     }
     @GetMapping("/{id}/membersoncards")
     public List<MembersOnCards> findAllMembersOnCardsByCardId(@PathVariable Integer id)

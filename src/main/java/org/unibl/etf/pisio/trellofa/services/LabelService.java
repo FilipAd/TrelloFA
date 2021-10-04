@@ -17,7 +17,7 @@ public interface LabelService {
 
     Label update(Integer id, LabelRequest labelRequest) throws NotFoundException;
 
-    List<Label> getAllLabelsByCardId(Integer id);
+  //  List<Label> getAllLabelsByCardId(Integer id);
 }
 
 
