@@ -22,5 +22,11 @@ public class LabelEntity {
     @Basic
     @Column(name = "text", nullable = true, length = -1)
     private String text;
+    @Basic
+    @Column(name = "id_member", nullable = false)
+    private Integer idMember;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_member", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    private MemberEntity member;
 
 }

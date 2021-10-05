@@ -41,6 +41,11 @@ public class LabelServiceImpl implements LabelService
     }
 
     @Override
+    public List<Label> findByMemberId(Integer idMember) throws NotFoundException {
+        return repository.getAllByMember_Id(idMember).stream().map(e->mapper.map(e,Label.class)).collect(Collectors.toList());
+    }
+
+    @Override
     public void delete(Integer id) throws NotFoundException
     {
         repository.deleteById(id);

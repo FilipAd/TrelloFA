@@ -12,5 +12,6 @@ public interface BoardHasMembersEntityRepository extends JpaRepository<BoardHasM
     List<BoardHasMembersEntity> getAllByMember_Id(Integer id);
     List<BoardHasMembersEntity> getAllByBoard_Id(Integer id);
     List<BoardHasMembersEntity> getAllByMember_IdAndBoard_Id(Integer idMember, Integer idBoard);
+    void deleteAllByMember_IdAndBoard_Id(Integer idMember, Integer idBoard);
 
 }

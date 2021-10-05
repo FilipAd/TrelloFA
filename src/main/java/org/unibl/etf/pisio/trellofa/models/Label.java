@@ -18,4 +18,6 @@ public class Label
 
     private String text;
 
+    private Integer idMember;
+
 }

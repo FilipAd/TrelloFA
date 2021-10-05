@@ -11,4 +11,6 @@ public class LabelRequest
 
     private String text;
 
+    private Integer idMember;
+
 }

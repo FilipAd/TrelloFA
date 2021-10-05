@@ -20,8 +20,9 @@ public class MemberController
     private final BoardHasMembersService boardHasMembersService;
     private final MembersOnCardsService membersOnCardsService;
     private final BoardService boardService;
+    private final LabelService labelService;
 
-    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService, MembersOnCardsService membersOnCardsService, BoardService boardService)
+    public MemberController(MemberService memebeService, MembershipService membershipService, AttachmentService attachmentService, CommentService commentService, BoardHasMembersService boardHasMembersService, MembersOnCardsService membersOnCardsService, BoardService boardService, LabelService labelService)
     {
         this.memeberService = memebeService;
         this.membershipService = membershipService;
@@ -30,6 +31,7 @@ public class MemberController
         this.boardHasMembersService = boardHasMembersService;
         this.membersOnCardsService = membersOnCardsService;
         this.boardService = boardService;
+        this.labelService = labelService;
     }
 
     @GetMapping
@@ -78,6 +80,12 @@ public class MemberController
     {
         return membersOnCardsService.getAllMembersOnCardsByMemberId(id);
     }
+
+    @GetMapping("/{id}/labels")
+    public List<Label> findAllLabelsByMemberId(@PathVariable Integer id) throws NotFoundException {
+        return labelService.findByMemberId(id);
+    }
+
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id)throws NotFoundException

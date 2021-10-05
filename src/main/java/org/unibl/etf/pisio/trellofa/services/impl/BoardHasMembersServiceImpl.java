@@ -55,6 +55,12 @@ public class BoardHasMembersServiceImpl implements BoardHasMembersService
     }
 
     @Override
+    public void deleteAllBoardHasMembersByMemberIdAndBoardId(Integer idMember, Integer idBoard) throws NotFoundException
+    {
+        repository.deleteAllByMember_IdAndBoard_Id(idMember,idBoard);
+    }
+
+    @Override
     public BoardHasMembers findById(Integer id) throws NotFoundException
     {
         return mapper.map(repository.findById(id).orElseThrow(NotFoundException::new),BoardHasMembers.class);

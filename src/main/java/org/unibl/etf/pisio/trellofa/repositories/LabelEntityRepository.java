@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface LabelEntityRepository extends JpaRepository<LabelEntity,Integer>
 {
-//  List<LabelEntity> getAllBy(Integer id);
+  List<LabelEntity> getAllByMember_Id(Integer id);
 }
