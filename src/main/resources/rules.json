@@ -7,17 +7,29 @@
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/boardsa/**",
+      "pattern": "/boards/**",
       "roles": ["USER","ADMIN"]
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/listsa/**",
+      "pattern": "/lists/**",
       "roles": ["USER","ADMIN"]
     },
     {
       "methods": ["GET","POST","PUT","DELETE"],
-      "pattern": "/cardsa/**",
+      "pattern": "/cards/**",
+      "roles": ["USER","ADMIN"]
+    },
+
+    {
+      "methods": ["GET","POST","PUT","DELETE"],
+      "pattern": "/boardhasmembers/**",
+      "roles": ["USER","ADMIN"]
+    },
+
+    {
+      "methods": ["GET","POST","PUT","DELETE"],
+      "pattern": "/cardshaslabels/**",
       "roles": ["USER","ADMIN"]
     }
   ]

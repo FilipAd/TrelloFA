@@ -1,9 +1,12 @@
 package org.unibl.etf.pisio.trellofa.models.entities;
 
 import lombok.*;
+import org.springframework.data.convert.Jsr310Converters;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Objects;
 
 @Data
