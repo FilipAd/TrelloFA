@@ -17,4 +17,5 @@ public class Invitation
 
         private String sender;
 
+        private String boardName;
 }
