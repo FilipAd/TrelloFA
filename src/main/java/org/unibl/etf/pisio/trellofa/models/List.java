@@ -22,6 +22,8 @@ private Integer id;
 
     private Integer idBoard;
 
+    private String boardName;
+
     private java.util.List<Card> cards;
 
 }
